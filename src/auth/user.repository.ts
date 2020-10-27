@@ -39,7 +39,7 @@ export class UserRepository extends Repository<User> {
       throw new NotFoundException('Username not found');
     }
 
-    return (await found.validatePassword(password)) ? found.username : '';
+    return await found.validatePassword(password) ? found.username : '';
   }
 
   private async hashPassword(password: string, salt: string): Promise<string> {
